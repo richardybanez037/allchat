@@ -52,21 +52,10 @@ export default function Home() {
   return (
     <div className='flex justify-center w-full'>
       <form 
-        className='flex flex-col gap-1 p-2 pb-0 pt-0 h-screen w-full md:w-[50em]'
+        className='flex flex-col gap-1 p-2 h-screen w-full md:w-[50em]'
         onSubmit={submitMessage}
       >
-        <div className='flex gap-1 items-center pb-2 sticky top-0 pt-2 bg-black'>
-          <label className="text-gray-300">Name:</label>
-          <input 
-            onChange={e => setNameInput(e.target.value)}
-            maxLength={20}
-            minLength={1}
-            name="message" 
-            className="rounded border w-full h-full p-2 outline-none bg-gray-300 max-w-80 bg-black"
-            required
-            />
-        </div>
-        <div className='grow border-2 border-gray-300 rounded p-2 pb-0 mb-2 overflow-y-scroll sticky'>
+        <div className='grow border-2 border-gray-300 rounded p-2 pb-0 mb-1 overflow-y-scroll sticky'>
           {
             loading ? 
               <Loading/> :
@@ -74,10 +63,20 @@ export default function Home() {
           }
           <span ref={lastItemRef}></span>
         </div>
-        <div className="flex gap-2 pb-2">
+        <input 
+          onChange={e => setNameInput(e.target.value)}
+          placeholder='Chat name'
+          maxLength={20}
+          minLength={1}
+          name="message" 
+          className="rounded border w-full p-2 outline-none bg-gray-300"
+          required
+        />
+        <div className="flex gap-2">
           <input
             onChange={e => setMessageInput(e.target.value)} 
             value={messageInput}
+            placeholder='Aa'
             name="message" 
             className="rounded border w-full h-full p-2 outline-none bg-gray-100"
             required
@@ -89,6 +88,7 @@ export default function Home() {
                 lazyLoadEmojis={true}
                 theme={Theme.DARK}
                 emojiStyle={EmojiStyle.NATIVE}
+                autoFocusSearch={false}
                 width={300}
                 onEmojiClick={(selected) => setMessageInput(prev => prev + selected.emoji)}
               />
