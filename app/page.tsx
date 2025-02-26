@@ -62,11 +62,11 @@ export default function Home() {
             maxLength={20}
             minLength={1}
             name="message" 
-            className="rounded border w-full h-full p-2 outline-none bg-gray-300 max-w-80"
+            className="rounded border w-full h-full p-2 outline-none bg-gray-300 max-w-80 bg-black"
             required
             />
         </div>
-        <div className='grow border-2 border-gray-300 rounded p-2 pb-0 mb-2 overflow-y-scroll'>
+        <div className='grow border-2 border-gray-300 rounded p-2 pb-0 mb-2 overflow-y-scroll sticky top-12'>
           {
             loading ? 
               <Loading/> :
