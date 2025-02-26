@@ -55,7 +55,7 @@ export default function Home() {
         className='flex flex-col gap-1 p-2 h-screen w-full md:w-[50em]'
         onSubmit={submitMessage}
       >
-        <div className='flex gap-1 items-center pb-2'>
+        <div className='flex gap-1 items-center pb-2 sticky top-0'>
           <label className="text-gray-300">Name:</label>
           <input 
             onChange={e => setNameInput(e.target.value)}
