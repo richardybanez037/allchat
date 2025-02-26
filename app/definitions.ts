@@ -20,5 +20,6 @@ export interface IMessagePayload {
 }
 
 export interface InitMessageState {
-    messages: IMessage[]
+    messages: IMessage[],
+    loading: boolean
 }

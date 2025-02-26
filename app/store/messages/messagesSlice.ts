@@ -4,7 +4,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMessage, InitMessageState } from '@/app/definitions';
 
 const initialState: InitMessageState = {
-    messages: []
+    messages: [],
+    loading: true
 }
 
 const messagesSlice = createSlice({
@@ -13,6 +14,9 @@ const messagesSlice = createSlice({
     reducers: {
         getMessages: (state, action: PayloadAction<IMessage[]>) => {
             state.messages = action.payload
+        },
+        isLoadingMessages: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload
         },
         //received message
         addMessage: (state, action: PayloadAction<IMessage>) => {
@@ -23,6 +27,7 @@ const messagesSlice = createSlice({
 
 export const {
     getMessages,
+    isLoadingMessages,
     addMessage
 } = messagesSlice.actions
 

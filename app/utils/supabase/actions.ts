@@ -4,10 +4,16 @@ import { IMessage, IMessagePayload, ISendMessage } from "@/app/definitions";
 import { supabaseClient } from "./client";
 import { addMessage } from "@/app/store/messages/messagesSlice";
 import { AppDispatch } from '@/app/store/store'
+import { PostgrestError } from "@supabase/supabase-js";
 
-export const all = await supabaseClient
+export const all = async (): Promise<IMessage[]> => {
+    const { data, error }: { data: IMessage[] | null , error: PostgrestError | null } = await supabaseClient
     .from('messages')
     .select()
+
+    if(error) throw new Error(`Error fetching all messages: ${error.message}`)
+    return data ?? []
+}
 
 function isIMessagePayload(payload: unknown): payload is IMessagePayload {
     if (typeof payload !== "object" || payload === null) return false;
@@ -48,10 +54,8 @@ export const subscribeToMessages = (dispatch: AppDispatch) => {
                 table: 'messages' 
             }, 
             (payload: unknown) => {
-                console.log('ngi')
-                if (isIMessagePayload(payload) && payload.new) {
+                if (isIMessagePayload(payload) && payload.new)
                     dispatch(addMessage(payload.new));
-                }
             })
         .subscribe()
 }
