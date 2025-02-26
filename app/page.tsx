@@ -85,13 +85,14 @@ export default function Home() {
             />
           </div>
           <div className='relative flex items-center justify-center'>
-            <div className='absolute bottom-12 right-0'>
+            <div className='absolute bottom-12 -right-16'>
               <EmojiPicker 
                 open={showEmoji} 
                 lazyLoadEmojis={true}
                 theme={Theme.DARK}
                 emojiStyle={EmojiStyle.NATIVE}
                 autoFocusSearch={true}
+                width={"50vw"}
                 onEmojiClick={(selected) => setMessageInput(prev => prev + selected.emoji)}
               />
             </div>
