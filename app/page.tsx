@@ -55,7 +55,7 @@ export default function Home() {
         className='flex flex-col gap-1 p-2 pb-0 pt-0 h-screen w-full md:w-[50em]'
         onSubmit={submitMessage}
       >
-        <div className='flex gap-1 items-center pb-2 sticky top-0 pt-2'>
+        <div className='flex gap-1 items-center pb-2 sticky top-0 pt-2 bg-black'>
           <label className="text-gray-300">Name:</label>
           <input 
             onChange={e => setNameInput(e.target.value)}
@@ -89,7 +89,7 @@ export default function Home() {
                 lazyLoadEmojis={true}
                 theme={Theme.DARK}
                 emojiStyle={EmojiStyle.NATIVE}
-                width={"50vw"}
+                width={300}
                 onEmojiClick={(selected) => setMessageInput(prev => prev + selected.emoji)}
               />
             </div>
