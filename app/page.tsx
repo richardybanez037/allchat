@@ -69,7 +69,7 @@ export default function Home() {
           maxLength={20}
           minLength={1}
           name="message" 
-          className="rounded border w-full p-2 outline-none bg-gray-300"
+          className="rounded border w-full p-2 outline-none bg-gray-100"
           required
         />
         <div className="flex gap-2">
